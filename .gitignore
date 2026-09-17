@@ -1,0 +1,3 @@
+target/
+.DS_Store
+jenkins/initial-admin-password.txt

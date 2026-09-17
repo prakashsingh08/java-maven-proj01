@@ -1,0 +1,26 @@
+services:
+  maven:
+    image: maven:3.9-eclipse-temurin-17
+    volumes:
+      - .:/app
+      - ~/.m2:/root/.m2
+    working_dir: /app
+    entrypoint: mvn
+
+  jenkins:
+    build:
+      context: ./jenkins
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    # Docker Desktop's socket is owned by root inside its VM; running as root
+    # here is a local-learning shortcut so the jenkins user can reach it.
+    # Not a pattern to carry into a production Jenkins setup.
+    user: root
+    restart: unless-stopped
+
+volumes:
+  jenkins_home:
