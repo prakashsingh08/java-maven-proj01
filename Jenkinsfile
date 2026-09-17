@@ -6,6 +6,10 @@ pipeline {
         }
     }
 
+    environment {
+        CLOUDSMITH = credentials('cloudsmith-creds')
+    }
+
     stages {
         stage('Build') {
             steps {
@@ -38,23 +42,21 @@ pipeline {
 
         stage('Publish') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'cloudsmith-creds', usernameVariable: 'CLOUDSMITH_USER', passwordVariable: 'CLOUDSMITH_API_KEY')]) {
-                    sh '''
-                        cat > settings-cloudsmith.xml <<EOF
+                sh '''
+                    cat > settings-cloudsmith.xml <<EOF
 <settings>
   <servers>
     <server>
       <id>cloudsmith</id>
-      <username>${CLOUDSMITH_USER}</username>
-      <password>${CLOUDSMITH_API_KEY}</password>
+      <username>${CLOUDSMITH_USR}</username>
+      <password>${CLOUDSMITH_PSW}</password>
     </server>
   </servers>
 </settings>
 EOF
-                        mvn -B deploy -DskipTests -s settings-cloudsmith.xml
-                        rm -f settings-cloudsmith.xml
-                    '''
-                }
+                    mvn -B deploy -DskipTests -s settings-cloudsmith.xml
+                    rm -f settings-cloudsmith.xml
+                '''
             }
         }
     }
