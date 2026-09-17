@@ -45,4 +45,15 @@
       </plugin>
     </plugins>
   </build>
+
+  <distributionManagement>
+    <repository>
+      <id>cloudsmith</id>
+      <url>https://maven.cloudsmith.io/java_tech/java-maven/</url>
+    </repository>
+    <snapshotRepository>
+      <id>cloudsmith</id>
+      <url>https://maven.cloudsmith.io/java_tech/java-maven/</url>
+    </snapshotRepository>
+  </distributionManagement>
 </project>

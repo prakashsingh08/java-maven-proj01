@@ -35,6 +35,28 @@ pipeline {
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
             }
         }
+
+        stage('Publish') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'cloudsmith-creds', usernameVariable: 'CLOUDSMITH_USER', passwordVariable: 'CLOUDSMITH_API_KEY')]) {
+                    sh '''
+                        cat > settings-cloudsmith.xml <<EOF
+<settings>
+  <servers>
+    <server>
+      <id>cloudsmith</id>
+      <username>${CLOUDSMITH_USER}</username>
+      <password>${CLOUDSMITH_API_KEY}</password>
+    </server>
+  </servers>
+</settings>
+EOF
+                        mvn -B deploy -DskipTests -s settings-cloudsmith.xml
+                        rm -f settings-cloudsmith.xml
+                    '''
+                }
+            }
+        }
     }
 
     post {

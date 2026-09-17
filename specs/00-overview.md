@@ -14,8 +14,8 @@ Learn Maven and Jenkins CI/CD end to end by building each piece by hand, spec fi
 | # | Spec | Produces | Status |
 |---|------|----------|--------|
 | 1 | [01-java-maven-project.md](01-java-maven-project.md) | `pom.xml`, `src/main/java`, `src/test/java` | Done |
-| 2 | [02-jenkinsfile.md](02-jenkinsfile.md) | `Jenkinsfile` at repo root | File created — validation pending Phase 3 |
-| 3 | [03-jenkins-docker-compose.md](03-jenkins-docker-compose.md) | `docker-compose.yml`, local Jenkins on `localhost:8080` | Not started |
+| 2 | [02-jenkinsfile.md](02-jenkinsfile.md) | `Jenkinsfile` at repo root | Done |
+| 3 | [03-jenkins-docker-compose.md](03-jenkins-docker-compose.md) | `docker-compose.yml`, local Jenkins on `localhost:8080` | Done |
 | 4 | [04-cloudsmith-artifact-publish.md](04-cloudsmith-artifact-publish.md) | Cloudsmith repo + Maven `distributionManagement` + Jenkins publish stage | Not started |
 
 ## Working agreement
