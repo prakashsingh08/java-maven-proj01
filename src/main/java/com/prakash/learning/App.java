@@ -8,7 +8,7 @@ public class App {
 
     public static void main(String[] args) {
         App app = new App();
-        System.out.println("Hello, Maven!");
+        System.out.println("Hello, Maven! (from feature/test-multibranch)");
         System.out.println("2 + 3 = " + app.add(2, 3));
     }
 }
