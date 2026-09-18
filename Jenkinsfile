@@ -8,18 +8,20 @@ pipeline {
 
     environment {
         CLOUDSMITH = credentials('cloudsmith-creds')
+        APP_VERSION = "1.0.${BUILD_NUMBER}"
     }
 
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -B compile'
+                echo "Building version ${APP_VERSION}"
+                sh 'mvn -B compile -Drevision=${APP_VERSION}'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'mvn -B test'
+                sh 'mvn -B test -Drevision=${APP_VERSION}'
             }
             post {
                 always {
@@ -30,7 +32,7 @@ pipeline {
 
         stage('Package') {
             steps {
-                sh 'mvn -B package -DskipTests'
+                sh 'mvn -B package -DskipTests -Drevision=${APP_VERSION}'
             }
         }
 
@@ -54,7 +56,7 @@ pipeline {
   </servers>
 </settings>
 EOF
-                    mvn -B deploy -DskipTests -s settings-cloudsmith.xml
+                    mvn -B deploy -DskipTests -Drevision=${APP_VERSION} -s settings-cloudsmith.xml
                     rm -f settings-cloudsmith.xml
                 '''
             }

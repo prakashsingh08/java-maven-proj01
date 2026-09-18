@@ -17,7 +17,7 @@ Learn Maven and Jenkins CI/CD end to end by building each piece by hand, spec fi
 | 2 | [02-jenkinsfile.md](02-jenkinsfile.md) | `Jenkinsfile` at repo root | Done |
 | 3 | [03-jenkins-docker-compose.md](03-jenkins-docker-compose.md) | `docker-compose.yml`, local Jenkins on `localhost:8080` | Done |
 | 4 | [04-cloudsmith-artifact-publish.md](04-cloudsmith-artifact-publish.md) | Cloudsmith repo + Maven `distributionManagement` + Jenkins publish stage | Done |
-| 5 | [05-version-release-flow.md](05-version-release-flow.md) | CI-friendly version (`${revision}`) + per-build version in Jenkins | Not started |
+| 5 | [05-version-release-flow.md](05-version-release-flow.md) | CI-friendly version (`${revision}`) + per-build version in Jenkins | Implemented — pending verification |
 | 6 | [06-multibranch-pipeline.md](06-multibranch-pipeline.md) | Multibranch Pipeline job, per-branch builds | Not started |
 | 7 | [07-branching-and-release-scenarios.md](07-branching-and-release-scenarios.md) | Branch-conditional publish + practiced release/hotfix scenarios | Not started |
 | 8 | [08-pipeline-types-and-shared-library.md](08-pipeline-types-and-shared-library.md) | Jenkins Shared Library repo + slimmed-down `Jenkinsfile` | Not started |
