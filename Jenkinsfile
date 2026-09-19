@@ -43,6 +43,9 @@ pipeline {
         }
 
         stage('Publish') {
+            when {
+                branch 'main'
+            }
             steps {
                 sh '''
                     cat > settings-cloudsmith.xml <<EOF
